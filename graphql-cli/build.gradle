@@ -159,6 +159,7 @@ copyJar.dependsOn shadowJar
 copyJar.dependsOn jar
 test.dependsOn copyJar
 jacocoTestReport.dependsOn test
+shadowJar.dependsOn ":${packageName}-schema-file-generator:build"
 test.dependsOn ":${packageName}-schema-file-generator:build"
 
-build.dependsOn(jacocoTestReport)
+build.dependsOn ":${packageName}-schema-file-generator:build"
