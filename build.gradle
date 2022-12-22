@@ -227,7 +227,6 @@ publishing {
     }
 }
 
-directoryBuild.dependsOn ":${packageName}-schema-file-generator:build"
 directoryBuild.dependsOn ":${packageName}-cli:build"
 directoryBuild.dependsOn(checkstyleMain)
 directoryBuild.dependsOn(checkstyleTest)

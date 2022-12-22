@@ -106,5 +106,3 @@ copyStdlibs.dependsOn unpackStdLibs
 shadowJar.dependsOn copyStdlibs
 copyJar.dependsOn shadowJar
 copyJar.dependsOn jar
-
-build.dependsOn(copyJar)
