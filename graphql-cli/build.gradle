@@ -122,8 +122,7 @@ test {
     systemProperties = [ "target.dir": "$project.buildDir",
                          "distributions.dir": bDistribution,
                          "ballerina.home": bDistribution,
-                         "ballerina.version": "jballerina-tools-${ballerinaLangVersion}",
-                         "ballerina.graphql.version": "${stdlibGraphqlVersion}"
+                         "ballerina.version": "jballerina-tools-${ballerinaLangVersion}"
     ]
 
     testLogging {
