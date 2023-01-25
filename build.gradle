@@ -103,6 +103,7 @@ subprojects {
     configurations {
         ballerinaStdLibs
     }
+
     dependencies {
         /* Standard libraries */
         ballerinaStdLibs "io.ballerina.stdlib:constraint-ballerina:${stdlibConstraintVersion}"

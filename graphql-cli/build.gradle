@@ -18,6 +18,10 @@
 apply plugin: "com.github.johnrengelman.shadow"
 apply plugin: "jacoco"
 
+configurations.all {
+    resolutionStrategy.preferProjectModules()
+}
+
 configurations {
     balTools
     dist {
@@ -34,6 +38,7 @@ dependencies {
     implementation "org.ballerinalang:ballerina-tools-api:${ballerinaLangVersion}"
     implementation "info.picocli:picocli:${picocliVersion}"
     testImplementation "org.testng:testng:${testngVersion}"
+    testImplementation "org.apache.commons:commons-lang3:${commonsLang3Version}"
     implementation "commons-io:commons-io:${commonsIoVersion}"
     implementation "commons-logging:commons-logging:${commonsLoggingVersion}" // NEW
     implementation "org.yaml:snakeyaml:${snakeYamlVersion}" // NEW
@@ -114,11 +119,21 @@ task initializeVariables {
 }
 
 test {
+    systemProperties = [ "target.dir": "$project.buildDir",
+                         "distributions.dir": bDistribution,
+                         "ballerina.home": bDistribution,
+                         "ballerina.version": "jballerina-tools-${ballerinaLangVersion}"
+    ]
+
+    testLogging {
+        showStackTraces = true
+        showStandardStreams = true
+    }
+
     dependsOn {
         copyStdlibs
         initializeVariables
     }
-    systemProperty "ballerina.home", bDistribution
 
     useTestNG() {
         excludeGroups(disableGroups)
@@ -161,4 +176,4 @@ copyJar.dependsOn jar
 test.dependsOn copyJar
 jacocoTestReport.dependsOn test
 
-build.dependsOn ":${packageName}-schema-file-generator:build"
+build.dependsOn(jacocoTestReport)
