@@ -33,6 +33,7 @@ ext.googleGuavaVersion = project.googleGuavaVersion
 ext.snakeYamlVersion = project.snakeYamlVersion
 ext.orgJsonVersion = project.orgJsonVersion
 ext.picocliVersion = project.picocliVersion
+ext.stdlibGraphqlVersion = project.stdlibGraphqlVersion
 ext.puppycrawlCheckstyleVersion = "8.18"
 
 def packageName = "graphql"
