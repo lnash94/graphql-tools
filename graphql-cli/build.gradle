@@ -126,8 +126,6 @@ test {
                          "ballerina.version": "jballerina-tools-${ballerinaLangVersion}"
     ]
 
-    systemProperty "ballerina.home", bDistribution
-
     testLogging {
         showStackTraces = true
         showStandardStreams = true
