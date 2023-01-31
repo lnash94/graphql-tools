@@ -2,11 +2,4 @@
 org = "ballerina_sdl_file_generator_test"
 name = "project_1"
 version = "0.1.0"
-
-[[dependency]]
-org = "ballerina"
-name = "graphql"
-version = "1.5.0"
-
-[build-options]
-observabilityIncluded = true
+distribution = "../graphql-cli/build/extracted-distribution/jballerina-tools-2201.4.0-20230130-171600-b819386a"
