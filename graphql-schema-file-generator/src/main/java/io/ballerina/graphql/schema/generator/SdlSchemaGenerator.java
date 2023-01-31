@@ -222,13 +222,13 @@ public class SdlSchemaGenerator {
      * Get the compilation of given Ballerina source.
      */
     private static PackageCompilation getPackageCompilation(Project project) throws SchemaFileGenerationException {
-        DiagnosticResult diagnosticResult = project.currentPackage().runCodeGenAndModifyPlugins();
-        boolean hasErrors = diagnosticResult
+        PackageCompilation compilation = project.currentPackage().getCompilation();
+        boolean hasErrors = compilation.diagnosticResult()
                 .diagnostics().stream()
                 .anyMatch(d -> DiagnosticSeverity.ERROR.equals(d.diagnosticInfo().severity()));
         if (!hasErrors) {
-            PackageCompilation compilation = project.currentPackage().getCompilation();
-            hasErrors = compilation.diagnosticResult()
+            DiagnosticResult diagnosticResult = project.currentPackage().runCodeGenAndModifyPlugins();
+            hasErrors = diagnosticResult
                     .diagnostics().stream()
                     .anyMatch(d -> DiagnosticSeverity.ERROR.equals(d.diagnosticInfo().severity()));
             if (!hasErrors) {
